@@ -249,11 +249,11 @@
         >,
         <span
           class="underline decoration-secondary decoration-4 md:decoration-[6px]"
-          >fast</span
+          >Fast</span
         >, and
         <span
           class="underline decoration-secondary decoration-4 md:decoration-[6px]"
-          > affordable</span
+          >Affordable</span
         >
         <span>way to build</span>
         <span
