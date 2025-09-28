@@ -235,17 +235,17 @@
       <div
         class="text-xl md:text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-accent mb-3 md:mb-7 pb-1"
       >
-        SaaS Starter Demo
+        Craftuary
       </div>
 
       <div
         class="text-4xl md:text-6xl font-bold px-2"
         style="line-height: 1.2;"
       >
-        The
-        <span
+        The 
+        <span 
           class="underline decoration-secondary decoration-4 md:decoration-[6px]"
-          >open source</span
+          >Simple</span
         >,
         <span
           class="underline decoration-secondary decoration-4 md:decoration-[6px]"
@@ -253,39 +253,37 @@
         >, and
         <span
           class="underline decoration-secondary decoration-4 md:decoration-[6px]"
-          >free to host</span
+          > affordable</span
         >
-        <span> SaaS template</span>
+        <span>way to build</span>
+        <span
+          class="underline decoration-secondary decoration-4 md:decoration-[6px]"
+          > Websites</span
+        >
       </div>
       <div class="mt-6 md:mt-10 text-sm md:text-lg">
-        Built with <a
+         Free-to-host <a
           href="https://kit.svelte.dev"
           class="link font-bold"
-          target="_blank">SvelteKit</a
+          target="_blank">templates</a
         >,
         <a href="https://supabase.com" class="link font-bold" target="_blank"
-          >Supabase</a
+          >domains</a
         >,
         <a href="https://stripe.com" class="link font-bold" target="_blank"
-          >Stripe</a
-        >,
-        <a href="https://tailwindcss.com" class="link font-bold" target="_blank"
-          >Tailwind</a
-        >,
-        <a href="https://daisyui.com" class="link font-bold" target="_blank"
-          >DaisyUI</a
+          >hosting</a
         >, and
-        <a
-          href="https://www.postgresql.org"
-          class="link font-bold"
-          target="_blank">Postgres</a
-        >
+        <a href="https://tailwindcss.com" class="link font-bold" target="_blank"
+          >on-demand developers</a
+        >.
+        
+        
       </div>
       <div
         class="mt-6 md:mt-4 flex flex-row flex-wrap gap-4 place-content-center"
       >
-        <a href="https://github.com/CriticalMoments/CMSaasStarter">
-          <button class="btn btn-primary px-6">★ us on Github</button>
+        <a href="http://localhost:5173/#features">
+          <button class="btn btn-primary px-6">Start Now</button>
         </a>
         <a
           href="https://github.com/CriticalMoments/CMSaasStarter/tree/main#saas-starter"
@@ -298,7 +296,7 @@
   </div>
 </div>
 <div class="min-h-[60vh]">
-  <div class="pt-20 pb-8 px-7">
+  <div id="features" class="pt-20 pb-8 px-7" >
     <div class="max-w-lg mx-auto text-center">
       <div
         class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-accent pb-2"
@@ -402,7 +400,7 @@
           <div class="my-auto">
             <div class="px-4 text-lg md:text-xl">
               <a href="https://criticalmoments.io" class="" target="_blank"
-                >SaaS Starter was created by <span
+                >Craftuary was created by <span
                   class="font-bold whitespace-nowrap">Critical Moments</span
                 >: a SDK to to help mobile apps
                 <span class="underline decoration-secondary decoration-[3px]"
@@ -415,7 +413,7 @@
                 href="https://criticalmoments.io"
                 class="link font-bold"
                 target="_blank">webpage</a
-              > is the best example of SaaS Starter with style and real content.
+              > is the best example of Craftuary with style and real content.
             </div>
             <div class="mt-4 text-large">
               <a href="https://criticalmoments.io" target="_blank">
