@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { WebsiteName } from "./../../config"
   import "../../app.css"
 
   interface Props {
@@ -11,14 +10,16 @@
 
 <div class="navbar bg-base-100 container mx-auto">
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl" href="/">{WebsiteName}</a>
+    <a class="btn btn-ghost normal-case" href="/">
+      <img src="/images/logo.svg" alt="Logo" class="h-8" />
+    </a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1 hidden sm:flex font-bold text-lg">
       <li class="md:mx-4">
         <a
-          href="https://github.com/CriticalMoments/CMSaasStarter"
-          class="border border-primary">★ us on Github</a
+          href="https://app.craftuary.com/login"
+          class="border border-primary">Sign In</a
         >
       </li>
       <li class="md:mx-2"><a href="/blog">Blog</a></li>
@@ -68,8 +69,8 @@
         <li><a href="/search">Search</a></li>
         <li>
           <a
-            href="https://github.com/CriticalMoments/CMSaasStarter"
-            class="border border-primary">★ us on Github</a
+            href="https://app.craftuary.com/login"
+            class="border border-primary">Sign In</a
           >
         </li>
       </ul>
@@ -100,15 +101,14 @@
       >
     </nav>
     <aside>
-      <span class="footer-title opacity-80">Sponsor</span>
-      <a class="max-w-[260px]" href="https://getkiln.ai">
-        <div class="font-bold text-3xl mb-1">Kiln AI</div>
+      
+      <a class="max-w-[260px]" href="https://www.craftuary.com">
+        <div class="font-bold text-3xl mb-1">Craftuary</div>
         <div class="font-medium mb-3">Build High Quality AI Products</div>
         <div class="font-light">
-          Use advanced AI tactics, and collaborate with your team. Free apps for
-          Mac and Windows.
+          © 2025 craftuary – Launch, grow, and succeed online, supported by developers who puts the power in your hands.
         </div>
-        <div class="link text-sm font-bold mt-2">Learn More</div>
+        
       </a>
     </aside>
   </footer>

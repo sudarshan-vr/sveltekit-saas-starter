@@ -36,7 +36,7 @@
     },
     {
       name: "User Auth",
-      link: "/login",
+      link: "https://app.craftuary.com/login",
       description:
         "Sign up, sign out, forgot password, email verification, and oAuth. Powered by Supabase Auth.",
       svgContent: `<path
@@ -235,7 +235,7 @@
       <div
         class="text-xl md:text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-accent mb-3 md:mb-7 pb-1"
       >
-        Craftuary (Site Under Maintainance)
+        Your online success starts here
       </div>
 
       <div
@@ -282,13 +282,13 @@
       <div
         class="mt-6 md:mt-4 flex flex-row flex-wrap gap-4 place-content-center"
       >
-        <a href="http://localhost:5173/#features">
+        <a href="https://app.craftuary.com">
           <button class="btn btn-primary px-6">Start Now</button>
         </a>
         <a
-          href="https://github.com/CriticalMoments/CMSaasStarter/tree/main#saas-starter"
+          href="/#features"
         >
-          <button class="btn btn-outline btn-primary px-6">Read the Docs</button
+          <button class="btn btn-outline btn-primary px-6">Explore</button
           >
         </a>
       </div>

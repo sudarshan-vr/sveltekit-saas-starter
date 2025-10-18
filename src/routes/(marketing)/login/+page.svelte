@@ -1,16 +1,18 @@
+<script lang="ts">
+  import { onMount } from "svelte"
+  
+  onMount(() => {
+    window.location.href = "https://app.craftuary.com/login"
+  })
+</script>
+
 <svelte:head>
-  <title>Log In</title>
+  <title>Redirecting to Login...</title>
 </svelte:head>
 
-<div>
-  <h1 class="text-xl font-bold">Get Started</h1>
-  <a href="/login/sign_up"
-    ><button class="btn btn-primary mt-3 btn-wide">Sign Up</button></a
-  >
-
-  <h1 class="text-xl mt-6">Already have an account?</h1>
-  <a href="/login/sign_in"
-    ><button class="btn btn-outline btn-primary mt-3 btn-wide">Sign In</button
-    ></a
-  >
+<div class="flex flex-col items-center justify-center min-h-screen">
+  <div class="text-center">
+    <h1 class="text-xl font-bold mb-4">Redirecting to login...</h1>
+    <p class="mb-4">If you are not redirected automatically, <a href="https://app.craftuary.com/login" class="link link-primary">click here</a>.</p>
+  </div>
 </div>

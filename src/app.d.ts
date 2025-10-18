@@ -1,23 +1,21 @@
-import { Session, SupabaseClient, type AMREntry } from "@supabase/supabase-js"
-import { Database } from "./DatabaseDefinitions"
+// Authentication is now handled externally at https://panel.craftuary.com
+// Minimal type definitions to maintain compatibility
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare global {
   namespace App {
     interface Locals {
-      supabase: SupabaseClient<Database>
-      supabaseServiceRole: SupabaseClient<Database>
       safeGetSession: () => Promise<{
-        session: Session | null
-        user: User | null
-        amr: AMREntry[] | null
+        session: null
+        user: null
+        amr: null
       }>
-      session: Session | null
-      user: User | null
+      session: null
+      user: null
     }
     interface PageData {
-      session: Session | null
+      session: null
     }
     // interface Error {}
     // interface Platform {}

@@ -2,20 +2,13 @@
   import { goto } from "$app/navigation"
   import { onMount } from "svelte"
 
-  let { data } = $props()
-
-  let { supabase } = data
   let message = $state("Signing out....")
 
-  // on mount, sign out
+  // Redirect to home since auth is handled externally
   onMount(() => {
-    supabase.auth.signOut().then(({ error }) => {
-      if (error) {
-        message = "There was an issue signing out."
-      } else {
-        goto("/")
-      }
-    })
+    setTimeout(() => {
+      goto("/")
+    }, 500)
   })
 </script>
 

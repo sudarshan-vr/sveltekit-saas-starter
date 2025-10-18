@@ -2,7 +2,6 @@
   import "../../../../app.css"
   import { writable } from "svelte/store"
   import { setContext } from "svelte"
-  import { WebsiteName } from "../../../../config"
   interface Props {
     children?: import("svelte").Snippet
   }
@@ -29,7 +28,9 @@
   <div class="drawer-content">
     <div class="navbar bg-base-100 lg:hidden">
       <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl" href="/">{WebsiteName}</a>
+        <a class="btn btn-ghost normal-case" href="/">
+          <img src="/images/logo.svg" alt="Logo" class="h-8" />
+        </a>
       </div>
       <div class="flex-none">
         <div class="dropdown dropdown-end">
@@ -65,7 +66,9 @@
         <div
           class="normal-case menu-title text-xl font-bold text-primary flex flex-row"
         >
-          <a href="/" class="grow">{WebsiteName}</a>
+          <a href="/" class="grow">
+            <img src="/images/logo.svg" alt="Logo" class="h-8" />
+          </a>
           <label for="admin-drawer" class="lg:hidden ml-3"> &#x2715; </label>
         </div>
       </li>
