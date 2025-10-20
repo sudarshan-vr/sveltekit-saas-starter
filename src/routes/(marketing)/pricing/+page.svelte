@@ -1,6 +1,7 @@
 <script lang="ts">
   import PricingModule from "./pricing_module.svelte"
-  import { WebsiteName } from "./../../../config"
+  import { WebsiteName, WebsiteBaseUrl } from "./../../../config"
+  import SEO from "$lib/components/SEO.svelte"
 
   type PlanFeatureRow = {
     name: string
@@ -48,10 +49,13 @@
   ]
 </script>
 
-<svelte:head>
-  <title>Pricing</title>
-  <meta name="description" content="Pricing - {WebsiteName}" />
-</svelte:head>
+<SEO 
+  title="Pricing"
+  description="Affordable pricing plans for {WebsiteName}. Choose the perfect plan for your needs - from free to enterprise. Totally free to host, scales to millions of users."
+  url="{WebsiteBaseUrl}/pricing"
+  type="website"
+  keywords="pricing, plans, subscription, free plan, pro plan, {WebsiteName} pricing"
+/>
 
 <div class="min-h-[70vh] pb-8 pt-[5vh] px-4">
   <h1 class="text-3xl font-bold text-center">Pricing</h1>

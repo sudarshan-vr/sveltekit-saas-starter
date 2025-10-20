@@ -2,7 +2,8 @@
   import { page } from "$app/stores"
   import { error } from "@sveltejs/kit"
   import { sortedBlogPosts, type BlogPost } from "./../posts"
-  import { WebsiteName } from "../../../../config"
+  import { WebsiteName, WebsiteBaseUrl } from "../../../../config"
+  import SEO from "$lib/components/SEO.svelte"
   interface Props {
     children?: import("svelte").Snippet
   }
@@ -42,25 +43,17 @@
   let pageUrl = $derived($page.url.origin + $page.url.pathname)
 </script>
 
+<SEO 
+  title={currentPost.title}
+  description={currentPost.description}
+  url={pageUrl}
+  type="article"
+  keywords={currentPost.title}
+  publishedTime={currentPost.parsedDate?.toISOString()}
+  modifiedTime={currentPost.parsedDate?.toISOString()}
+/>
+
 <svelte:head>
-  <title>{currentPost.title}</title>
-  <meta name="description" content={currentPost.description} />
-
-  <!-- Facebook -->
-  <meta property="og:title" content={currentPost.title} />
-  <meta property="og:description" content={currentPost.description} />
-  <meta property="og:site_name" content={WebsiteName} />
-  <meta property="og:url" content={pageUrl} />
-  <!-- <meta property="og:image" content="https://samplesite.com/image.jpg"> -->
-
-  <!-- Twitter -->
-  <!-- “summary”, “summary_large_image”, “app”, or “player” -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content={currentPost.title} />
-  <meta name="twitter:description" content={currentPost.description} />
-  <!-- <meta name="twitter:site" content="@samplesite"> -->
-  <!-- <meta name="twitter:image" content="https://samplesite.com/image.jpg"> -->
-
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html jsonldScript}
 </svelte:head>

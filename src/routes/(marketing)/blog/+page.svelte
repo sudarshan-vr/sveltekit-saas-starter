@@ -1,11 +1,16 @@
 <script lang="ts">
   import { sortedBlogPosts, blogInfo } from "./posts"
+  import { WebsiteBaseUrl } from "./../../../config"
+  import SEO from "$lib/components/SEO.svelte"
 </script>
 
-<svelte:head>
-  <title>{blogInfo.name}</title>
-  <meta name="description" content="Our blog posts." />
-</svelte:head>
+<SEO 
+  title={blogInfo.name}
+  description="Read our latest articles, tutorials, and insights about SaaS development, SvelteKit, web performance, and modern web technologies."
+  url="{WebsiteBaseUrl}/blog"
+  type="website"
+  keywords="blog, articles, tutorials, SaaS, SvelteKit, web development, technology"
+/>
 
 <div class="py-8 lg:py-12 px-6 max-w-lg mx-auto">
   <div

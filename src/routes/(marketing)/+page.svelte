@@ -4,12 +4,19 @@
     WebsiteBaseUrl,
     WebsiteDescription,
   } from "./../../config"
+  import SEO from "$lib/components/SEO.svelte"
 
   const ldJson = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: WebsiteName,
     url: WebsiteBaseUrl,
+    description: WebsiteDescription,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${WebsiteBaseUrl}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
   }
   const jsonldScript = `<script type="application/ld+json">${
     JSON.stringify(ldJson) + "<"
@@ -37,9 +44,14 @@
   ]
 </script>
 
+<SEO 
+  title={WebsiteName}
+  description={WebsiteDescription}
+  url={WebsiteBaseUrl}
+  type="website"
+/>
+
 <svelte:head>
-  <title>{WebsiteName}</title>
-  <meta name="description" content={WebsiteDescription} />
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html jsonldScript}
 </svelte:head>
