@@ -86,7 +86,7 @@
       
       <a class="max-w-[260px]" href="https://www.craftuary.com">
         <div class="font-bold text-3xl mb-1">Craftuary</div>
-        <div class="font-medium mb-3">Build High Quality AI Products</div>
+        <div class="font-medium mb-3">Bring Your Digital Ideas to Life</div>
         <div class="font-light">
           © 2025 craftuary – Launch, grow, and succeed online, supported by developers who puts the power in your hands.
         </div>
