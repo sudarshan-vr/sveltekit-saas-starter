@@ -154,11 +154,10 @@
               <a
                 href={feature.link}
                 class="pb-4"
-                target={feature.newPage ? "_blank" : ""}
               >
                 <button
                   class="btn btn-xs btn-outline rounded-full btn-primary min-w-[100px]"
-                  >{feature.linkText ? feature.linkText : "Try It"}</button
+                  >Try It</button
                 >
               </a>
             {/if}
