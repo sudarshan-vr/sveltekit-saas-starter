@@ -78,18 +78,15 @@
       </div>
       <div class="mt-6 md:mt-10 text-sm md:text-lg">
          Free-to-host <a
-          href="https://kit.svelte.dev"
+          href="https://app.crafruary.com"
           class="link font-bold"
           target="_blank">templates</a
         >,
-        <a href="https://supabase.com" class="link font-bold" target="_blank"
+        <a href="https://app.craftuary.com" class="link font-bold" target="_blank"
           >domains</a
-        >,
-        <a href="https://stripe.com" class="link font-bold" target="_blank"
+        >,and
+        <a href="https://app.craftuary.com" class="link font-bold" target="_blank"
           >hosting</a
-        >, and
-        <a href="https://tailwindcss.com" class="link font-bold" target="_blank"
-          >on-demand developers</a
         >.
         
         
