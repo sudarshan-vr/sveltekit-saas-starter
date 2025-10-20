@@ -223,11 +223,12 @@
           <div class="my-auto">
             <div class="px-4 text-lg md:text-xl">
               <a href="https://criticalmoments.io" class="" target="_blank"
-                >Craftuary was created by <span
-                  class="font-bold whitespace-nowrap">Critical Moments</span
-                >: a SDK to to help mobile apps
+                >Experience how<span
+                  class="font-bold whitespace-nowrap">Craftuary Themes</span
+                >transform creativity into reality.
+Our pre-built, customizable website themes help you design and launch stunning websites faster than ever 
                 <span class="underline decoration-secondary decoration-[3px]"
-                  >increase conversion rates and app-ratings.</span
+                  > — with little to no coding needed.</span
                 ></a
               >
             </div>
@@ -235,8 +236,8 @@
               Our <a
                 href="https://criticalmoments.io"
                 class="link font-bold"
-                target="_blank">webpage</a
-              > is the best example of Craftuary with style and real content.
+                target="_blank">Check out</a
+              > our live examples to see how brands use Craftuary to build their online presence.
             </div>
             <div class="mt-4 text-large">
               <a href="https://criticalmoments.io" target="_blank">

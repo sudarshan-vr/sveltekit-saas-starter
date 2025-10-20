@@ -22,6 +22,7 @@
           class="border border-primary">Sign In</a
         >
       </li>
+      <li class="md:mx-2"><a href="/themes">Themes</a></li>
       <li class="md:mx-2"><a href="/blog">Blog</a></li>
       <li class="md:mx-2"><a href="/pricing">Pricing</a></li>
     </ul>
@@ -48,6 +49,7 @@
         tabindex="0"
         class="menu menu-lg dropdown-content mt-3 z-1 p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold"
       >
+        <li><a href="/themes">Themes</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/pricing">Pricing</a></li>
         <li>

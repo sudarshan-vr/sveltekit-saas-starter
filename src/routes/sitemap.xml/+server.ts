@@ -16,6 +16,11 @@ export async function GET() {
       priority: 1.0,
     },
     {
+      url: "/themes",
+      changefreq: "daily",
+      priority: 0.9,
+    },
+    {
       url: "/pricing",
       changefreq: "weekly",
       priority: 0.8,
