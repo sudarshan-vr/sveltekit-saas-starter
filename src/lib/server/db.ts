@@ -1,35 +1,39 @@
-import mysql from 'mysql2/promise'
-import { env } from '$env/dynamic/private'
+import mysql from 'mysql2/promise';
+import { env } from '$env/dynamic/private';
 
 // MySQL connection configuration
 const dbConfig = {
   host: env.MYSQL_HOST || 'localhost',
-  port: parseInt(env.MYSQL_PORT || '3306'),
+  port: Number(env.MYSQL_PORT) || 3306,
   user: env.MYSQL_USER || 'root',
   password: env.MYSQL_PASSWORD || '',
-  database: env.MYSQL_DATABASE || 'craftuary_db',
+  database: env.MYSQL_DATABASE || 'craftuary',
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
-}
+  maxIdle: 10,
+  idleTimeout: 60000,
+  queueLimit: 0,
+  enableKeepAlive: true,
+  keepAliveInitialDelay: 0
+};
 
 // Create connection pool
-let pool: mysql.Pool
+let pool: mysql.Pool;
 
 export function getPool() {
   if (!pool) {
-    pool = mysql.createPool(dbConfig)
+    pool = mysql.createPool(dbConfig);
   }
-  return pool
+  return pool;
 }
 
 // Helper function to execute queries
-export async function query<T>(sql: string, params?: (string | number | boolean | null)[]): Promise<T> {
-  const connection = await getPool().getConnection()
+export async function query<T>(sql: string, params: any[] = []): Promise<T> {
+  const connection = await getPool().getConnection();
   try {
-    const [results] = await connection.execute(sql, params)
-    return results as T
+    const [results] = await connection.execute(sql, params);
+    return results as T;
   } finally {
-    connection.release()
+    connection.release();
   }
 }

@@ -50,73 +50,78 @@ export const GET: RequestHandler = async ({ url }) => {
     const search = url.searchParams.get('search')
     const isFree = url.searchParams.get('is_free')
 
-    let sql = 'SELECT * FROM themes WHERE 1=1'
-    const params: string[] = []
+    // Try to fetch from MySQL database
+    try {
+      let sql = 'SELECT * FROM themes WHERE 1=1'
+      const params: string[] = []
 
-    // Add filters
+      // Add filters
+      if (technology && technology !== 'All') {
+        sql += ' AND technology = ?'
+        params.push(technology)
+      }
+
+      if (category && category !== 'All') {
+        sql += ' AND category = ?'
+        params.push(category)
+      }
+
+      if (isFree === 'true') {
+        sql += ' AND is_free = 1'
+      }
+
+      if (search && search.trim() !== '') {
+        sql += ' AND (name LIKE ? OR description LIKE ?)'
+        const searchTerm = `%${search}%`
+        params.push(searchTerm, searchTerm)
+      }
+
+      sql += ' ORDER BY created_at DESC'
+
+      const themes = await query<Theme[]>(sql, params)
+      
+      // If we got results from the database, return them
+      if (themes && Array.isArray(themes) && themes.length > 0) {
+        return json(themes.map(theme => ({
+          ...theme,
+          is_free: Boolean(theme.is_free)
+        })))
+      }
+      
+      // If no results, fall through to mock data
+      console.log('No themes found in database, using mock data')
+      
+    } catch (dbError) {
+      console.error('Database error, using mock data:', dbError)
+    }
+    
+    // Fallback to mock data if no results from database or database error
+    let filteredThemes = [...mockThemes]
+    
     if (technology && technology !== 'All') {
-      sql += ' AND technology = ?'
-      params.push(technology)
-    }
-
-    if (category && category !== 'All') {
-      sql += ' AND category = ?'
-      params.push(category)
-    }
-
-    if (isFree === 'true') {
-      sql += ' AND is_free = true'
-    }
-
-    if (search && search.trim() !== '') {
-      sql += ' AND (name LIKE ? OR description LIKE ?)'
-      const searchTerm = `%${search}%`
-      params.push(searchTerm, searchTerm)
-    }
-
-    sql += ' ORDER BY created_at DESC'
-
-    const themes = await query<Theme[]>(sql, params)
-
-    // Convert is_free from 1/0 to boolean
-    const formattedThemes = themes.map(theme => ({
-      ...theme,
-      is_free: Boolean(theme.is_free)
-    }))
-
-    return json(formattedThemes)
-  } catch (error) {
-    console.error('Error fetching themes:', error)
-    console.log('⚠️  Using mock data - Database connection failed')
-    
-    // Return mock data with filters applied
-    let filteredMockThemes = [...mockThemes]
-    
-    const technology = url.searchParams.get('technology')
-    const category = url.searchParams.get('category')
-    const search = url.searchParams.get('search')
-    const isFree = url.searchParams.get('is_free')
-    
-    if (technology && technology !== 'All') {
-      filteredMockThemes = filteredMockThemes.filter(t => t.technology === technology)
+      filteredThemes = filteredThemes.filter(t => t.technology === technology)
     }
     
     if (category && category !== 'All') {
-      filteredMockThemes = filteredMockThemes.filter(t => t.category === category)
+      filteredThemes = filteredThemes.filter(t => t.category === category)
     }
     
     if (isFree === 'true') {
-      filteredMockThemes = filteredMockThemes.filter(t => t.is_free)
+      filteredThemes = filteredThemes.filter(t => t.is_free)
     }
     
     if (search && search.trim() !== '') {
       const searchLower = search.toLowerCase()
-      filteredMockThemes = filteredMockThemes.filter(t => 
+      filteredThemes = filteredThemes.filter(t => 
         t.name.toLowerCase().includes(searchLower) || 
         t.description.toLowerCase().includes(searchLower)
       )
     }
     
-    return json(filteredMockThemes)
+    return json(filteredThemes)
+    
+  } catch (error) {
+    console.error('Unexpected error in themes API:', error)
+    return json({ error: 'Failed to fetch themes' }, { status: 500 })
   }
 }

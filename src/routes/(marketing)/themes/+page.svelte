@@ -90,27 +90,31 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <!-- Search -->
         <div class="md:col-span-2">
-          <label class="label">
+          <label for="search-input" class="label">
             <span class="label-text font-semibold">Search</span>
           </label>
           <input 
+            id="search-input"
             type="text" 
             placeholder="Search themes..." 
             class="input input-bordered w-full input-primary"
             bind:value={searchQuery}
             on:input={handleSearch}
+            aria-label="Search themes"
           />
         </div>
 
         <!-- Technology Filter -->
         <div>
-          <label class="label">
+          <label for="technology-select" class="label">
             <span class="label-text font-semibold">Technology</span>
           </label>
           <select 
+            id="technology-select"
             class="select select-bordered w-full select-primary"
             bind:value={selectedTechnology}
             on:change={handleTechnologyChange}
+            aria-label="Filter by technology"
           >
             {#each technologies as tech}
               <option value={tech}>{tech}</option>
@@ -120,13 +124,15 @@
 
         <!-- Category Filter -->
         <div>
-          <label class="label">
+          <label for="category-select" class="label">
             <span class="label-text font-semibold">Industry</span>
           </label>
           <select 
+            id="category-select"
             class="select select-bordered w-full select-primary"
             bind:value={selectedCategory}
             on:change={handleCategoryChange}
+            aria-label="Filter by industry"
           >
             {#each categories as cat}
               <option value={cat}>{cat}</option>
@@ -138,12 +144,13 @@
       <!-- Free Only Toggle -->
       <div class="mt-4 flex items-center gap-2">
         <input 
+          id="free-only-toggle"
           type="checkbox" 
           class="checkbox checkbox-primary" 
           bind:checked={showFreeOnly}
           on:change={handleFreeToggle}
         />
-        <label class="label-text font-semibold cursor-pointer">
+        <label for="free-only-toggle" class="label-text font-semibold cursor-pointer">
           Show Free Themes Only
         </label>
       </div>

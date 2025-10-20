@@ -9,6 +9,7 @@ export interface Theme {
   download_url: string
   deploy_url: string
   is_free: boolean
+  created_at?: string
 }
 
 export const technologies = [
