@@ -84,7 +84,7 @@
         >,
         <a href="https://app.craftuary.com" class="link font-bold" target="_blank"
           >domains</a
-        >,and
+        > and
         <a href="https://app.craftuary.com" class="link font-bold" target="_blank"
           >hosting</a
         >.
