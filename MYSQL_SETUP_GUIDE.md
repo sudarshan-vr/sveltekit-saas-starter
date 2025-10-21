@@ -26,11 +26,11 @@ Create a file named `.env` in the project root with your Hostinger credentials:
 
 ```env
 # MySQL Database Configuration - HOSTINGER
-MYSQL_HOST=srv1837.hstgr.io
+MYSQL_HOST=gvyugg
 MYSQL_PORT=3306
-MYSQL_USER=u190097430_appcraftuary
-MYSQL_PASSWORD=$Udarshan$123.
-MYSQL_DATABASE=u190097430_fapp
+MYSQL_USER=gfvhjytj
+MYSQL_PASSWORD=yuhygyf3.
+MYSQL_DATABASE=ytfgfju
 
 # Website URL
 PUBLIC_WEBSITE_URL=http://localhost:5173
@@ -38,7 +38,7 @@ PUBLIC_WEBSITE_URL=http://localhost:5173
 
 **Note about the password:**
 - The `$` character in your password should work as-is in the `.env` file
-- If you encounter issues, you can try wrapping it in quotes: `MYSQL_PASSWORD="$Udarshan$123."`
+- If you encounter issues, you can try wrapping it in quotes: `MYSQL_PASSWORD="jhgyjfg"`
 
 ### Step 2: Enable Remote MySQL Access in Hostinger
 
@@ -98,7 +98,7 @@ Visit: `http://localhost:5173/themes`
 ### Error: "Access denied for user"
 - **Cause**: Password issue or incorrect credentials
 - **Fix**: Double-check your password in `.env` file
-- **Alternative**: Try wrapping password in quotes: `MYSQL_PASSWORD="$Udarshan$123."`
+- **Alternative**: Try wrapping password in quotes: `MYSQL_PASSWORD="hgbhjbjgvg."`
 
 ### Error: "Can't connect to MySQL server"
 - **Cause**: Remote MySQL not enabled in Hostinger

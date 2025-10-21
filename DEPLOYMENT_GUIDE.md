@@ -55,11 +55,11 @@ git push origin main
    Click on "Environment Variables" and add these:
 
    ```
-   MYSQL_HOST=srv1837.hstgr.io
+   MYSQL_HOST=jhjhbbj
    MYSQL_PORT=3306
-   MYSQL_USER=u190097430_appcraftuary
-   MYSQL_PASSWORD=$Udarshan$123.
-   MYSQL_DATABASE=u190097430_fapp
+   MYSQL_USER=hjbjhbj
+   MYSQL_PASSWORD=$jhbhj$123.
+   MYSQL_DATABASE=nhjjbh
    PUBLIC_WEBSITE_URL=https://your-project.vercel.app
    ```
 
@@ -92,11 +92,11 @@ After deploying, you need to set environment variables:
 
 | Variable | Value | Environment |
 |----------|-------|-------------|
-| `MYSQL_HOST` | `srv1837.hstgr.io` | Production, Preview, Development |
+| `MYSQL_HOST` | `nkhjjhn` | Production, Preview, Development |
 | `MYSQL_PORT` | `3306` | Production, Preview, Development |
-| `MYSQL_USER` | `u190097430_appcraftuary` | Production, Preview, Development |
-| `MYSQL_PASSWORD` | `$Udarshan$123.` | Production, Preview, Development |
-| `MYSQL_DATABASE` | `u190097430_fapp` | Production, Preview, Development |
+| `MYSQL_USER` | `jknkjh` | Production, Preview, Development |
+| `MYSQL_PASSWORD` | `$jhjn` | Production, Preview, Development |
+| `MYSQL_DATABASE` | `hnjn` | Production, Preview, Development |
 | `PUBLIC_WEBSITE_URL` | `https://your-project.vercel.app` | Production, Preview, Development |
 
 4. **Redeploy** after adding environment variables:

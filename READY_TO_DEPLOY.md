@@ -76,11 +76,11 @@ Go to: **Project Settings** → **Environment Variables**
 Add these (copy-paste ready):
 
 ```
-MYSQL_HOST=srv1837.hstgr.io
+MYSQL_HOST=hgvhjgv
 MYSQL_PORT=3306
-MYSQL_USER=u190097430_appcraftuary
-MYSQL_PASSWORD=$Udarshan$123.
-MYSQL_DATABASE=u190097430_fapp
+MYSQL_USER=hgbkbb
+MYSQL_PASSWORD=ngvhjgg
+MYSQL_DATABASE=gbhjgvv
 PUBLIC_WEBSITE_URL=https://your-project.vercel.app
 ```
 

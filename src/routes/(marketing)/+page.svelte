@@ -191,16 +191,16 @@
         class="flex flex-col lg:flex-row mt-6 gap-6 place-content-center content-center"
       >
         <div class="hidden md:block">
-          <a href="https://criticalmoments.io" target="_blank" class="link">
+          <a href="https://www.craftuary.com/themes" target="_blank" class="link">
             <div class="mockup-browser border">
               <div class="mockup-browser-toolbar">
                 <div class="input" style="background:#eee;">
-                  https://criticalmoments.io
+                  https://www.craftuary.com/themes
                 </div>
               </div>
               <div class="flex justify-center">
                 <img
-                  alt="Screenshot of criticalmoments.io homepage"
+                  alt="Screenshot of Themes & Templates"
                   class="aspect-2044/1242"
                   src="/images/example-home.png"
                 />
@@ -209,10 +209,10 @@
           </a>
         </div>
         <div class="md:hidden">
-          <a href="https://criticalmoments.io" target="_blank" class="link">
+          <a href="https://www.craftuary.com/themes" target="_blank" class="link">
             <div class="card shadow-xl border overflow-hidden">
               <img
-                alt="Screenshot of criticalmoments.io homepage"
+                alt="Screenshot of Themes & Templates homepage"
                 class="aspect-2044/1242"
                 src="/images/example-home.png"
               />
@@ -222,9 +222,9 @@
         <div class="min-w-[270px] lg:min-w-[420px] flex mt-6 lg:mt-0">
           <div class="my-auto">
             <div class="px-4 text-lg md:text-xl">
-              <a href="https://criticalmoments.io" class="" target="_blank"
-                >Experience how<span
-                  class="font-bold whitespace-nowrap">Craftuary Themes</span
+              <a href="https://www.craftuary.com/themes" class="" target="_blank"
+                >Experience how <span
+                  class="font-bold whitespace-nowrap">Craftuary Themes </span
                 >transform creativity into reality.
 Our pre-built, customizable website themes help you design and launch stunning websites faster than ever 
                 <span class="underline decoration-secondary decoration-[3px]"
@@ -234,13 +234,13 @@ Our pre-built, customizable website themes help you design and launch stunning w
             </div>
             <div class="px-4 mt-6 text-lg md:text-xl">
               Our <a
-                href="https://criticalmoments.io"
+                href="https://www.craftuary.com/themes"
                 class="link font-bold"
                 target="_blank">Check out</a
               > our live examples to see how brands use Craftuary to build their online presence.
             </div>
             <div class="mt-4 text-large">
-              <a href="https://criticalmoments.io" target="_blank">
+              <a href="https://www.craftuary.com/themes" target="_blank">
                 <button class="btn btn-primary btn-wide mt-3"
                   >See it in Action</button
                 >

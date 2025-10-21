@@ -31,11 +31,11 @@ git push origin main
 Add these in Vercel Dashboard → Settings → Environment Variables:
 
 ```
-MYSQL_HOST=srv1837.hstgr.io
+MYSQL_HOST=ghvghv
 MYSQL_PORT=3306
-MYSQL_USER=u190097430_appcraftuary
-MYSQL_PASSWORD=$Udarshan$123.
-MYSQL_DATABASE=u190097430_fapp
+MYSQL_USER=hgghjgv
+MYSQL_PASSWORD=gughbj.
+MYSQL_DATABASE=hgvhgjv
 PUBLIC_WEBSITE_URL=https://your-project.vercel.app
 ```
 

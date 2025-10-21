@@ -60,6 +60,31 @@
     fetchThemes()
   }
 
+  // Track theme action
+  async function trackAction(themeId: number, actionType: string) {
+    try {
+      await fetch('/api/themes/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ themeId, actionType })
+      })
+    } catch (err) {
+      console.error('Tracking failed:', err)
+    }
+  }
+
+  function handlePreview(theme: Theme) {
+    trackAction(theme.id, 'preview')
+  }
+
+  function handleDownload(theme: Theme) {
+    trackAction(theme.id, 'download')
+  }
+
+  function handleDeploy(theme: Theme) {
+    trackAction(theme.id, 'deploy')
+  }
+
   onMount(() => {
     fetchThemes()
   })
@@ -220,6 +245,7 @@
                   target="_blank" 
                   rel="noopener noreferrer"
                   class="btn btn-outline btn-primary btn-sm w-full"
+                  on:click={() => handlePreview(theme)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -233,6 +259,7 @@
                   target="_blank" 
                   rel="noopener noreferrer"
                   class="btn btn-primary btn-sm w-full"
+                  on:click={() => handleDeploy(theme)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -245,6 +272,7 @@
                   target="_blank" 
                   rel="noopener noreferrer"
                   class="btn btn-outline btn-accent btn-sm w-full"
+                  on:click={() => handleDownload(theme)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

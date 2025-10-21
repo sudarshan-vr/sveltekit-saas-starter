@@ -9,7 +9,14 @@ export interface Theme {
   download_url: string
   deploy_url: string
   is_free: boolean
+  price?: number
+  downloads?: number
+  views?: number
+  stock_quantity?: number | null
+  featured?: boolean
+  status?: 'active' | 'draft' | 'archived'
   created_at?: string
+  updated_at?: string
 }
 
 export const technologies = [
