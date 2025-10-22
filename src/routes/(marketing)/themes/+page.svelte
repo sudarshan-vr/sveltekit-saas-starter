@@ -91,11 +91,12 @@
 </script>
 
 <SEO 
-  title="Free Website Themes & Templates"
-  description="Discover beautiful, free website themes for React, Vue, Svelte, WordPress, and more. Download and deploy instantly with Craftuary's premium templates."
+  title="Free Website Themes & Templates - 2025 Best Downloads | Craftuary"
+  description="Browse thousands of free and premium website templates. React, Vue, Svelte, WordPress themes ready to deploy. Download, customize, and launch your website in minutes."
+  image="https://www.craftuary.com/images/logo.svg"
   url="{WebsiteBaseUrl}/themes"
   type="website"
-  keywords="website themes, free templates, React templates, WordPress themes, SaaS templates, landing page templates"
+  keywords="free website themes, website templates, React templates, WordPress themes, SaaS templates, landing page templates, CMS templates, premium themes, responsive templates"
 />
 
 <div class="min-h-screen pb-16 pt-8 px-4 bg-gradient-to-b from-base-100 to-base-200">

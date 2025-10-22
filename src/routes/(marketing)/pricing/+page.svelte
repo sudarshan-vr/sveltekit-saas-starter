@@ -50,11 +50,12 @@
 </script>
 
 <SEO 
-  title="Pricing"
-  description="Affordable pricing plans for {WebsiteName}. Choose the perfect plan for your needs - from free to enterprise. Totally free to host, scales to millions of users."
+  title="Pricing Plans - Affordable Web Hosting & Domains | Craftuary"
+  description="Transparent pricing for web hosting, domains, and premium themes. Flexible plans designed for creators, startups, and businesses. Start free or choose a plan that fits your budget."
+  image="https://www.craftuary.com/images/logo.svg"
   url="{WebsiteBaseUrl}/pricing"
   type="website"
-  keywords="pricing, plans, subscription, free plan, pro plan, {WebsiteName} pricing"
+  keywords="pricing, web hosting plans, domain pricing, affordable hosting, website pricing, cheap hosting, premium themes pricing"
 />
 
 <div class="min-h-[70vh] pb-8 pt-[5vh] px-4">

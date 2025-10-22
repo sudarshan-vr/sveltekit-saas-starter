@@ -5,11 +5,12 @@
 </script>
 
 <SEO 
-  title={blogInfo.name}
-  description="Read our latest articles, tutorials, and insights about SaaS development, SvelteKit, web performance, and modern web technologies."
+  title="Blog - Web Development Guides & Tutorials | Craftuary"
+  description="Learn from expert blogs on Green Tech, DIY website tips, Internet trends, web development, and more. Stay updated with guides, tutorials, and insights to build better websites."
+  image="https://www.craftuary.com/images/logo.svg"
   url="{WebsiteBaseUrl}/blog"
   type="website"
-  keywords="blog, articles, tutorials, SaaS, SvelteKit, web development, technology"
+  keywords="web development blog, DIY website tips, Green Tech, Internet trends, website tutorials, web design guides, development articles, tech blog"
 />
 
 <div class="py-8 lg:py-12 px-6 max-w-lg mx-auto">
