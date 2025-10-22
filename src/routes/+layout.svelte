@@ -1,6 +1,6 @@
 <script lang="ts">
   import "../app.css"
-  import { navigating } from "$app/stores"
+  import { navigating, page } from "$app/stores"
   import { expoOut } from "svelte/easing"
   import { slide } from "svelte/transition"
   interface Props {
@@ -8,7 +8,16 @@
   }
 
   let { children }: Props = $props()
+  
+  // Check if current page is an admin page
+  let isAdminPage = $derived($page.url.pathname.startsWith('/admin'))
 </script>
+
+<svelte:head>
+  {#if !isAdminPage}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3509522078956993" crossorigin="anonymous"></script>
+  {/if}
+</svelte:head>
 
 {#if $navigating}
   <!-- 
