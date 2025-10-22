@@ -54,6 +54,7 @@
     console.log('Component mounted, starting fetch...')
     await fetchThemes()
     fetchStatistics()
+    isMounted = true // Enable reactive filters after initial load
     console.log('Mount complete')
   })
 
@@ -242,17 +243,20 @@
     }
   }
 
-  // Reactive statements
+  // Reactive statements for search (client-side filtering)
   $: {
     searchQuery
     applyFilters()
   }
 
-  $: {
-    statusFilter
-    sortBy
-    sortOrder
-    if (!loading) fetchThemes()
+  // Track if component is mounted to avoid reactive loops
+  let isMounted = false
+  
+  // Reactive statement for server-side filters
+  $: if (isMounted) {
+    // Only trigger on actual filter changes, not loading state
+    const _ = statusFilter + sortBy + sortOrder
+    fetchThemes()
   }
 </script>
 
