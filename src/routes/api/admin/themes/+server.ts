@@ -37,7 +37,9 @@ export const GET: RequestHandler = async ({ url }) => {
       ...theme,
       is_free: Boolean(theme.is_free),
       featured: Boolean(theme.featured),
-      categories: theme.categories ? JSON.parse(theme.categories as any) : [theme.category]
+      categories: theme.categories ? 
+        (typeof theme.categories === 'string' ? JSON.parse(theme.categories) : theme.categories) 
+        : (theme.category ? [theme.category] : ['Business'])
     })))
     
   } catch (error) {
@@ -69,19 +71,19 @@ export const POST: RequestHandler = async ({ request }) => {
     const categoriesJson = JSON.stringify(categories)
     const primaryCategory = categories[0] || themeData.category
 
-    const sql = `
+    // Try to insert with categories column first, fallback to without it
+    let sql = `
       INSERT INTO themes (
-        name, description, category, categories, technology, thumbnail, 
+        name, description, category, technology, thumbnail, 
         preview_url, download_url, deploy_url, is_free, price, 
         stock_quantity, featured, status
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `
     
-    const params = [
+    let params = [
       themeData.name,
       themeData.description,
       primaryCategory,
-      categoriesJson,
       themeData.technology,
       themeData.thumbnail,
       themeData.preview_url,
@@ -93,6 +95,38 @@ export const POST: RequestHandler = async ({ request }) => {
       themeData.featured ?? false,
       themeData.status ?? 'active'
     ]
+    
+    // Try with categories column if it exists
+    try {
+      const checkCol = await query("SHOW COLUMNS FROM themes LIKE 'categories'")
+      if (checkCol && Array.isArray(checkCol) && checkCol.length > 0) {
+        sql = `
+          INSERT INTO themes (
+            name, description, category, categories, technology, thumbnail, 
+            preview_url, download_url, deploy_url, is_free, price, 
+            stock_quantity, featured, status
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `
+        params = [
+          themeData.name,
+          themeData.description,
+          primaryCategory,
+          categoriesJson,
+          themeData.technology,
+          themeData.thumbnail,
+          themeData.preview_url,
+          themeData.download_url,
+          themeData.deploy_url,
+          themeData.is_free ?? true,
+          themeData.price ?? 0,
+          themeData.stock_quantity ?? null,
+          themeData.featured ?? false,
+          themeData.status ?? 'active'
+        ]
+      }
+    } catch (e) {
+      // Column doesn't exist, use basic insert
+    }
 
     const result = await query<InsertResult>(sql, params)
     
@@ -127,12 +161,12 @@ export const PUT: RequestHandler = async ({ request, url }) => {
     const categoriesJson = JSON.stringify(categories)
     const primaryCategory = categories[0] || themeData.category
     
-    const sql = `
+    // Check if categories column exists
+    let sql = `
       UPDATE themes SET
         name = ?,
         description = ?,
         category = ?,
-        categories = ?,
         technology = ?,
         thumbnail = ?,
         preview_url = ?,
@@ -147,11 +181,10 @@ export const PUT: RequestHandler = async ({ request, url }) => {
       WHERE id = ?
     `
     
-    const params = [
+    let params = [
       themeData.name,
       themeData.description,
       primaryCategory,
-      categoriesJson,
       themeData.technology,
       themeData.thumbnail,
       themeData.preview_url,
@@ -164,6 +197,51 @@ export const PUT: RequestHandler = async ({ request, url }) => {
       themeData.status ?? 'active',
       themeId
     ]
+    
+    // Try with categories column if it exists
+    try {
+      const checkCol = await query("SHOW COLUMNS FROM themes LIKE 'categories'")
+      if (checkCol && Array.isArray(checkCol) && checkCol.length > 0) {
+        sql = `
+          UPDATE themes SET
+            name = ?,
+            description = ?,
+            category = ?,
+            categories = ?,
+            technology = ?,
+            thumbnail = ?,
+            preview_url = ?,
+            download_url = ?,
+            deploy_url = ?,
+            is_free = ?,
+            price = ?,
+            stock_quantity = ?,
+            featured = ?,
+            status = ?,
+            updated_at = CURRENT_TIMESTAMP
+          WHERE id = ?
+        `
+        params = [
+          themeData.name,
+          themeData.description,
+          primaryCategory,
+          categoriesJson,
+          themeData.technology,
+          themeData.thumbnail,
+          themeData.preview_url,
+          themeData.download_url,
+          themeData.deploy_url,
+          themeData.is_free ?? true,
+          themeData.price ?? 0,
+          themeData.stock_quantity ?? null,
+          themeData.featured ?? false,
+          themeData.status ?? 'active',
+          themeId
+        ]
+      }
+    } catch (e) {
+      // Column doesn't exist, use basic update
+    }
 
     await query(sql, params)
     
