@@ -54,11 +54,11 @@ Password: MySecurePass123!
 
 | Name | Value | Environment |
 |------|-------|-------------|
-| `MYSQL_HOST` | `jhhnkiu` | Production, Preview |
+| `MYSQL_HOST` | `srv1837.hstgr.io` | Production, Preview |
 | `MYSQL_PORT` | `3306` | Production, Preview |
-| `MYSQL_USER` | `jnhjjj` | Production, Preview |
-| `MYSQL_PASSWORD` | `$hjbjh$123.` | Production, Preview |
-| `MYSQL_DATABASE` | `uhnhn` | Production, Preview |
+| `MYSQL_USER` | `u190097430_appcraftuary` | Production, Preview |
+| `MYSQL_PASSWORD` | `your_database_password` | Production, Preview |
+| `MYSQL_DATABASE` | `u190097430_fapp` | Production, Preview |
 | `ADMIN_USERNAME` | **Your admin username** | Production, Preview |
 | `ADMIN_PASSWORD` | **Your secure password** | Production, Preview |
 | `PUBLIC_WEBSITE_URL` | `https://your-app.vercel.app` | Production, Preview |
