@@ -68,15 +68,30 @@
       const response = await fetch(`/api/admin/themes?${params}`)
       
       if (!response.ok) {
-        throw new Error('Failed to fetch themes')
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.error || 'Failed to fetch themes')
       }
       
-      themes = await response.json()
+      const data = await response.json()
+      
+      // Check if response is an array or an error object
+      if (Array.isArray(data)) {
+        themes = data
+      } else if (data.error) {
+        throw new Error(data.error)
+      } else {
+        themes = []
+        console.warn('Unexpected API response:', data)
+      }
+      
       applyFilters()
       calculateStats()
       
     } catch (err) {
       error = err instanceof Error ? err.message : 'An error occurred'
+      console.error('Fetch themes error:', err)
+      themes = []
+      filteredThemes = []
     } finally {
       loading = false
     }
