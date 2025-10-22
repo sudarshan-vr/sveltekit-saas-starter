@@ -75,9 +75,14 @@
       
       const data = await response.json()
       
+      console.log('API Response:', data)
+      console.log('Is Array:', Array.isArray(data))
+      console.log('Data length:', Array.isArray(data) ? data.length : 'N/A')
+      
       // Check if response is an array or an error object
       if (Array.isArray(data)) {
         themes = data
+        console.log('Themes set:', themes.length)
       } else if (data.error) {
         throw new Error(data.error)
       } else {
@@ -86,6 +91,7 @@
       }
       
       applyFilters()
+      console.log('Filtered themes:', filteredThemes.length)
       calculateStats()
       
     } catch (err) {
