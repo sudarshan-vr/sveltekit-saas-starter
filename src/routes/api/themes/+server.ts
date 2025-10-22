@@ -47,6 +47,7 @@ export const GET: RequestHandler = async ({ url }) => {
   try {
     const technology = url.searchParams.get('technology')
     const category = url.searchParams.get('category')
+    const categories = url.searchParams.getAll('categories') // Get multiple categories
     const search = url.searchParams.get('search')
     const isFree = url.searchParams.get('is_free')
 
@@ -61,9 +62,18 @@ export const GET: RequestHandler = async ({ url }) => {
         params.push(technology)
       }
 
-      if (category && category !== 'All') {
-        sql += ' AND category = ?'
-        params.push(category)
+      // Handle multiple categories
+      if (categories && categories.length > 0) {
+        // Filter themes that have ANY of the selected categories in their categories JSON array
+        const categoryConditions = categories.map(() => 'JSON_CONTAINS(categories, ?)').join(' OR ')
+        sql += ` AND (${categoryConditions})`
+        categories.forEach(cat => {
+          params.push(JSON.stringify(cat))
+        })
+      } else if (category && category !== 'All') {
+        // Fallback to single category for backward compatibility
+        sql += ' AND (category = ? OR JSON_CONTAINS(categories, ?))'
+        params.push(category, JSON.stringify(category))
       }
 
       if (isFree === 'true') {
@@ -84,7 +94,8 @@ export const GET: RequestHandler = async ({ url }) => {
       if (themes && Array.isArray(themes) && themes.length > 0) {
         return json(themes.map(theme => ({
           ...theme,
-          is_free: Boolean(theme.is_free)
+          is_free: Boolean(theme.is_free),
+          categories: theme.categories ? JSON.parse(theme.categories as any) : [theme.category]
         })))
       }
       

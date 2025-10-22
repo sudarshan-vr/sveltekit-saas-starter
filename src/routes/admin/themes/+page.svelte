@@ -36,6 +36,7 @@
       name: '',
       description: '',
       category: 'Business',
+      categories: ['Business'],
       technology: 'React',
       thumbnail: '',
       preview_url: '',
@@ -133,7 +134,13 @@
 
   function openEditModal(theme: Theme) {
     modalMode = 'edit'
-    currentTheme = { ...theme }
+    currentTheme = { 
+      ...theme,
+      // Ensure categories is always an array
+      categories: theme.categories && Array.isArray(theme.categories) 
+        ? theme.categories 
+        : [theme.category]
+    }
     showModal = true
   }
 
@@ -498,16 +505,39 @@
             />
           </div>
 
-          <!-- Category -->
-          <div class="form-control">
+          <!-- Categories (Multi-select) -->
+          <div class="form-control md:col-span-2">
             <label class="label">
-              <span class="label-text">Category *</span>
+              <span class="label-text">Categories * (Select one or more)</span>
             </label>
-            <select class="select select-bordered" bind:value={currentTheme.category} required>
+            <div class="flex flex-wrap gap-2 p-3 border border-base-300 rounded-lg">
               {#each categories.filter(c => c !== 'All') as category}
-                <option value={category}>{category}</option>
+                <label class="label cursor-pointer gap-2 px-3 py-1 border rounded-lg {currentTheme.categories?.includes(category) ? 'bg-primary text-primary-content border-primary' : 'bg-base-200'}">
+                  <input 
+                    type="checkbox" 
+                    class="checkbox checkbox-xs"
+                    value={category}
+                    checked={currentTheme.categories?.includes(category)}
+                    on:change={(e) => {
+                      if (!currentTheme.categories) currentTheme.categories = []
+                      if (e.currentTarget.checked) {
+                        currentTheme.categories = [...currentTheme.categories, category]
+                      } else {
+                        currentTheme.categories = currentTheme.categories.filter(c => c !== category)
+                      }
+                      // Update primary category
+                      currentTheme.category = currentTheme.categories[0] || 'Business'
+                    }}
+                  />
+                  <span class="label-text text-sm">{category}</span>
+                </label>
               {/each}
-            </select>
+            </div>
+            {#if !currentTheme.categories || currentTheme.categories.length === 0}
+              <label class="label">
+                <span class="label-text-alt text-error">Please select at least one category</span>
+              </label>
+            {/if}
           </div>
 
           <!-- Technology -->

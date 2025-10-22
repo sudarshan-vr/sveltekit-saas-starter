@@ -2,7 +2,8 @@ export interface Theme {
   id: number
   name: string
   description: string
-  category: string
+  category: string // Legacy: single category (kept for backward compatibility)
+  categories?: string[] // New: multiple categories array
   technology: string
   thumbnail: string
   preview_url: string

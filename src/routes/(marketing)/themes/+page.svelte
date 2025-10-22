@@ -11,7 +11,7 @@
   
   // Filter states
   let selectedTechnology = 'All'
-  let selectedCategory = 'All'
+  let selectedCategories: string[] = [] // Changed to array for multi-select
   let searchQuery = ''
   let showFreeOnly = false
 
@@ -21,7 +21,10 @@
     try {
       const params = new URLSearchParams()
       if (selectedTechnology !== 'All') params.append('technology', selectedTechnology)
-      if (selectedCategory !== 'All') params.append('category', selectedCategory)
+      // Append multiple categories
+      if (selectedCategories.length > 0) {
+        selectedCategories.forEach(cat => params.append('categories', cat))
+      }
       if (searchQuery) params.append('search', searchQuery)
       if (showFreeOnly) params.append('is_free', 'true')
 
@@ -148,22 +151,60 @@
           </select>
         </div>
 
-        <!-- Category Filter -->
+        <!-- Category Filter (Multi-select) -->
         <div>
-          <label for="category-select" class="label">
-            <span class="label-text font-semibold">Industry</span>
+          <label class="label">
+            <span class="label-text font-semibold">Industries (Multi-select)</span>
           </label>
-          <select 
-            id="category-select"
-            class="select select-bordered w-full select-primary"
-            bind:value={selectedCategory}
-            on:change={handleCategoryChange}
-            aria-label="Filter by industry"
-          >
-            {#each categories as cat}
-              <option value={cat}>{cat}</option>
-            {/each}
-          </select>
+          <div class="dropdown dropdown-end w-full">
+            <label tabindex="0" class="btn btn-outline w-full justify-between">
+              <span class="truncate">
+                {#if selectedCategories.length === 0}
+                  All Industries
+                {:else if selectedCategories.length === 1}
+                  {selectedCategories[0]}
+                {:else}
+                  {selectedCategories.length} selected
+                {/if}
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </label>
+            <div tabindex="0" class="dropdown-content z-[1] p-4 shadow bg-base-100 rounded-box w-64 border border-base-300 mt-1">
+              <div class="space-y-2">
+                {#each categories.filter(c => c !== 'All') as cat}
+                  <label class="label cursor-pointer justify-start gap-2 py-1">
+                    <input 
+                      type="checkbox" 
+                      class="checkbox checkbox-sm checkbox-primary"
+                      checked={selectedCategories.includes(cat)}
+                      on:change={(e) => {
+                        if (e.currentTarget.checked) {
+                          selectedCategories = [...selectedCategories, cat]
+                        } else {
+                          selectedCategories = selectedCategories.filter(c => c !== cat)
+                        }
+                        handleCategoryChange()
+                      }}
+                    />
+                    <span class="label-text">{cat}</span>
+                  </label>
+                {/each}
+              </div>
+              {#if selectedCategories.length > 0}
+                <button 
+                  class="btn btn-sm btn-ghost w-full mt-2"
+                  on:click={() => {
+                    selectedCategories = []
+                    handleCategoryChange()
+                  }}
+                >
+                  Clear All
+                </button>
+              {/if}
+            </div>
+          </div>
         </div>
       </div>
 

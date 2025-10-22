@@ -36,7 +36,8 @@ export const GET: RequestHandler = async ({ url }) => {
     return json(themes.map(theme => ({
       ...theme,
       is_free: Boolean(theme.is_free),
-      featured: Boolean(theme.featured)
+      featured: Boolean(theme.featured),
+      categories: theme.categories ? JSON.parse(theme.categories as any) : [theme.category]
     })))
     
   } catch (error) {
@@ -60,18 +61,27 @@ export const POST: RequestHandler = async ({ request }) => {
       }
     }
 
+    // Handle categories - support both single and multiple
+    const categories = themeData.categories && Array.isArray(themeData.categories) 
+      ? themeData.categories 
+      : [themeData.category]
+    
+    const categoriesJson = JSON.stringify(categories)
+    const primaryCategory = categories[0] || themeData.category
+
     const sql = `
       INSERT INTO themes (
-        name, description, category, technology, thumbnail, 
+        name, description, category, categories, technology, thumbnail, 
         preview_url, download_url, deploy_url, is_free, price, 
         stock_quantity, featured, status
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `
     
     const params = [
       themeData.name,
       themeData.description,
-      themeData.category,
+      primaryCategory,
+      categoriesJson,
       themeData.technology,
       themeData.thumbnail,
       themeData.preview_url,
@@ -109,11 +119,20 @@ export const PUT: RequestHandler = async ({ request, url }) => {
 
     const themeData = await request.json()
     
+    // Handle categories - support both single and multiple
+    const categories = themeData.categories && Array.isArray(themeData.categories) 
+      ? themeData.categories 
+      : [themeData.category]
+    
+    const categoriesJson = JSON.stringify(categories)
+    const primaryCategory = categories[0] || themeData.category
+    
     const sql = `
       UPDATE themes SET
         name = ?,
         description = ?,
         category = ?,
+        categories = ?,
         technology = ?,
         thumbnail = ?,
         preview_url = ?,
@@ -131,7 +150,8 @@ export const PUT: RequestHandler = async ({ request, url }) => {
     const params = [
       themeData.name,
       themeData.description,
-      themeData.category,
+      primaryCategory,
+      categoriesJson,
       themeData.technology,
       themeData.thumbnail,
       themeData.preview_url,
