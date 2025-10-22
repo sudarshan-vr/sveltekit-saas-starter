@@ -16,6 +16,11 @@ export async function GET() {
       priority: 1.0,
     },
     {
+      url: "https://app.craftuary.com/order/web-hosting-domain-registration",
+      changefreq: "weekly",
+      priority: 0.9,
+    },
+    {
       url: "/themes",
       changefreq: "daily",
       priority: 0.9,

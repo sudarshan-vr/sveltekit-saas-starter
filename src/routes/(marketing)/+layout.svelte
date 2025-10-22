@@ -22,6 +22,7 @@
           class="border border-primary">Sign In</a
         >
       </li>
+      <li class="md:mx-2"><a href="https://app.craftuary.com/order/web-hosting-domain-registration" target="_blank" rel="noopener noreferrer">Hosting & Domain</a></li>
       <li class="md:mx-2"><a href="/themes">Themes</a></li>
       <li class="md:mx-2"><a href="/blog">Blog</a></li>
       <li class="md:mx-2"><a href="/pricing">Pricing</a></li>
@@ -49,6 +50,7 @@
         tabindex="0"
         class="menu menu-lg dropdown-content mt-3 z-1 p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold"
       >
+        <li><a href="https://app.craftuary.com/order/web-hosting-domain-registration" target="_blank" rel="noopener noreferrer">Hosting & Domain</a></li>
         <li><a href="/themes">Themes</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/pricing">Pricing</a></li>
@@ -77,11 +79,12 @@
     <nav>
       <span class="footer-title opacity-80">Explore</span>
       <a class="link link-hover mb-1" href="/">Overview</a>
+      <a class="link link-hover my-1" href="https://app.craftuary.com/order/web-hosting-domain-registration" target="_blank" rel="noopener noreferrer">Hosting & Domain</a>
       <a class="link link-hover my-1" href="/pricing">Pricing</a>
       <a class="link link-hover my-1" href="/blog">Blog</a>
       <a
         class="link link-hover my-1"
-        href="https://github.com/CriticalMoments/CMSaasStarter">Github</a
+        href="https://unitechclub.com/contact">Contact</a
       >
     </nav>
     <aside>
