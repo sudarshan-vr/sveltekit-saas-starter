@@ -95,7 +95,9 @@ export const GET: RequestHandler = async ({ url }) => {
         return json(themes.map(theme => ({
           ...theme,
           is_free: Boolean(theme.is_free),
-          categories: theme.categories ? JSON.parse(theme.categories as any) : [theme.category]
+          categories: theme.categories 
+            ? (typeof theme.categories === 'string' ? JSON.parse(theme.categories) : theme.categories)
+            : [theme.category]
         })))
       }
       
