@@ -53,7 +53,6 @@
   onMount(async () => {
     console.log('Component mounted, starting fetch...')
     await fetchThemes()
-    fetchStatistics()
     isMounted = true // Enable reactive filters after initial load
     console.log('Mount complete')
   })
@@ -443,7 +442,7 @@
                     {#if theme.is_free}
                       <span class="badge badge-success">Free</span>
                     {:else}
-                      <span class="font-semibold">${theme.price?.toFixed(2)}</span>
+                      <span class="font-semibold">${Number(theme.price || 0).toFixed(2)}</span>
                     {/if}
                   </td>
                   <td>
