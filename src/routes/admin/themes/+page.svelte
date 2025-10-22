@@ -50,9 +50,11 @@
     }
   }
 
-  onMount(() => {
-    fetchThemes()
+  onMount(async () => {
+    console.log('Component mounted, starting fetch...')
+    await fetchThemes()
     fetchStatistics()
+    console.log('Mount complete')
   })
 
   async function fetchThemes() {
@@ -100,7 +102,11 @@
       themes = []
       filteredThemes = []
     } finally {
+      console.log('Setting loading to false')
       loading = false
+      console.log('Loading is now:', loading)
+      // Force a small delay to ensure state updates
+      await new Promise(resolve => setTimeout(resolve, 0))
     }
   }
 
